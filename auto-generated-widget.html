@@ -419,7 +419,8 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
             var maxFeed = this.options.RateZ;
             var maxDist = maxFeed / 400;
             
-            if (!this.isPausedByPlanner) {
+
+			if (!this.isPausedByPlanner) {
                 var feedRt = Math.floor( Math.abs( zVal ) * maxFeed / 4 );
                 var zJog = -1.0 * zVal * maxDist;  //this.maxDist / 4;
                 

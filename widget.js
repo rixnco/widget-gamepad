@@ -265,16 +265,16 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
             			}
         		        break;
         		    case 'DPAD_UP':
-        			    that.sendGcode("$J=G91 G1 F" + that.options.RateXY + " Y" + (that.options.IncJog * 0.1) );
+        			    that.sendGcode("$J=G91 G21 F" + that.options.RateXY + " Y" + (that.options.IncJog * 0.1) );
         		        break;
         		    case 'DPAD_DOWN':
-        		        that.sendGcode("$J=G91 G1 F" + that.options.RateXY + " Y" + (that.options.IncJog * -0.1) );
+        		        that.sendGcode("$J=G91 G21 F" + that.options.RateXY + " Y" + (that.options.IncJog * -0.1) );
         		        break;
         		    case 'DPAD_LEFT':
-        		        that.sendGcode("$J=G91 G1 F" + that.options.RateXY + " X" + (that.options.IncJog * -0.1) );
+        		        that.sendGcode("$J=G91 G21 F" + that.options.RateXY + " X" + (that.options.IncJog * -0.1) );
         		        break;
         		    case 'DPAD_RIGHT':
-        		        that.sendGcode("$J=G91 G1 F" + that.options.RateXY + " X" + (that.options.IncJog * 0.1) );
+        		        that.sendGcode("$J=G91 G21 F" + that.options.RateXY + " X" + (that.options.IncJog * 0.1) );
         		        break;
         		    case 'START_FORWARD':
         		        chilipeppr.publish('/com-chilipeppr-widget-gcode/play', "");
@@ -362,7 +362,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
                 var xJog = (Math.abs(xVal) > deadZone) ? ( xVal * maxDist ) : 0;
                 var yJog = (Math.abs(yVal) > deadZone) ? (-1.0 * yVal * maxDist) : 0;
                 
-                var gcode = "$J=G91 G1";
+                var gcode = "$J=G91 G21";
                 gcode += " F" + feedRt;
                 gcode += " X" + xJog.toFixed(3);
                 gcode += " Y" + yJog.toFixed(3);
@@ -389,7 +389,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
                 var feedRt = Math.floor( Math.abs( zVal ) * maxFeed / 4 );
                 var zJog = -1.0 * zVal * maxDist;  //this.maxDist / 4;
                 
-                var gcode = "$J=G91 G1";
+                var gcode = "$J=G91 G21";
                 gcode += " F" + feedRt;
                 gcode += " Z" + zJog.toFixed(3);
                 gcode += "\n";

@@ -1088,6 +1088,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
 	 * @param {String} Type.PLAYSTATION Playstation controller
 	 * @param {String} Type.LOGITECH Logitech controller
 	 * @param {String} Type.XBOX XBOX controller
+	 * @param {String} Type.SF30_PRO XBOX controller
 	 * @param {String} Type.UNKNOWN Unknown controller
 	 */
 	Gamepad.Type = {
@@ -1095,6 +1096,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
 		PLAYSTATION: 'playstation',
 		LOGITECH: 'logitech',
 		XBOX: 'xbox',
+		SF30_PRO: 'SF30_PRO',
 		UNKNOWN: 'unknown'
 	};
 
@@ -1358,7 +1360,45 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
 			axes: {
 				byAxis: [0, 1, 3, 4]
 			}
-		}
+		},
+		// 8BITDO SF30 PRO controller on WebKit
+		{
+			env: {
+				platform: WebKitPlatform.getType(),
+				type: Gamepad.Type.SF30_PRO
+			},
+			buttons: {
+				byButton: [
+					// TODO: Figure out which buttons to map A and Z buttons to.
+					2, // FACE_1 -- C-down button
+					1, // FACE_2 -- C-right button
+					3, // FACE_3 -- C-left button
+					0, // FACE_4 -- C-down button
+					4, // LEFT_TOP_SHOULDER -- L button
+					5, // RIGHT_TOP_SHOULDER -- R button
+					-1, // LEFT_BOTTOM_SHOULDER -- missing on controller
+					-1, // RIGHT_BOTTOM_SHOULDER -- missing on controller
+					8, // SELECT_BACK -- B button (is this right?)
+					9, // START_FORWARD -- START button
+					-1, // LEFT_STICK -- missing on controller
+					-1, // RIGHT_STICK -- missing on controller
+					12, // DPAD_UP -- D-Pad-up button
+					13, // DPAD_DOWN -- D-Pad-down button
+					14, // DPAD_LEFT -- D-Pad-left button
+					15, // DPAD_RIGHT -- D-Pad-right button
+					-1 // HOME -- missing on controller (could be START/B?)
+				]
+			},
+			axes: {
+				byAxis: [
+					0, // LEFT_STICK_X
+					1, // LEFT_STICK_Y
+					3, // RIGHT_STICK_X
+					4 // RIGHT_STICK_Y
+				]
+			}
+		},
+
 	];
 
 	/**
@@ -1799,6 +1839,8 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
 			(id.indexOf('vendor: 0079 product: 0006') !== -1 &&
 				id.indexOf('generic usb joystick') !== -1)) {
 			return Gamepad.Type.N64;
+		} else if (id.indexOf('(vendor: 2dc8 product: 6100)') !== -1 ) {
+			return Gamepad.Type.SF30_PRO;
 		} else {
 			return Gamepad.Type.UNKNOWN;
 		}

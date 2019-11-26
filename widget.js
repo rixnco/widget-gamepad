@@ -210,10 +210,10 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         	gamepad.bind(Gamepad.Event.DISCONNECTED, function(device) {
         		// gamepad disconnected, hide the widget
         		console.log("gamepad disconnected. device:", device);
-    		    if (!$('#com-chilipeppr-ws-xbox').hasClass("hidden")) {
-                    $('#com-chilipeppr-ws-xbox').addClass("hidden");
-                    $('#com-chilipeppr-ws-menu .xbox-button').removeClass("active");
-                }
+    		    // if (!$('#com-chilipeppr-ws-xbox').hasClass("hidden")) {
+                //     $('#com-chilipeppr-ws-xbox').addClass("hidden");
+                //     $('#com-chilipeppr-ws-menu .xbox-button').removeClass("active");
+                // }
         	});
         
         	gamepad.bind(Gamepad.Event.UNSUPPORTED, function(device) {

@@ -195,7 +195,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
             // Attach to events
             gamepad.bind(Gamepad.Event.CONNECTED, function(device) {
 //         		// a new gamepad connected
-//         		console.log("new gamepad connected. device:", device);
+         		console.log("new gamepad connected. device:", device);
 // //        		if (device.id.match(/xbox/i)) {
 //         		    console.log("found gamepad controller;");
 //         		    chilipeppr.publish('/com-chilipeppr-elem-flashmsg/flashmsg', 

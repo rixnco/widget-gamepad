@@ -228,17 +228,17 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
             
             // Attach to events
             gamepad.bind(Gamepad.Event.CONNECTED, function(device) {
-        		// a new gamepad connected
-        		console.log("new gamepad connected. device:", device);
-//        		if (device.id.match(/xbox/i)) {
-        		    console.log("found xbox controller;");
-        		    chilipeppr.publish('/com-chilipeppr-elem-flashmsg/flashmsg', 
-        		    "Xbox Controller Found", "Device: " + device.index, 500, false); 
-        		    if ($('#com-chilipeppr-ws-xbox').hasClass("hidden")) {
-                        $('#com-chilipeppr-ws-xbox').removeClass("hidden");
-                        $('#com-chilipeppr-ws-menu .xbox-button').addClass("active");
-                    }
-//        		}
+//         		// a new gamepad connected
+//         		console.log("new gamepad connected. device:", device);
+// //        		if (device.id.match(/xbox/i)) {
+//         		    console.log("found gamepad controller;");
+//         		    chilipeppr.publish('/com-chilipeppr-elem-flashmsg/flashmsg', 
+//         		    "Xbox Controller Found", "Device: " + device.id, 500, false); 
+//         		    if ($('#com-chilipeppr-ws-xbox').hasClass("hidden")) {
+//                         $('#com-chilipeppr-ws-xbox').removeClass("hidden");
+//                         $('#com-chilipeppr-ws-menu .xbox-button').addClass("active");
+//                     }
+// //        		}
         	});
         
         	gamepad.bind(Gamepad.Event.DISCONNECTED, function(device) {

@@ -196,7 +196,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
             gamepad.bind(Gamepad.Event.CONNECTED, function(device) {
         		// a new gamepad connected
         		console.log("new gamepad connected. device:", device);
-        		if (device.id.match(/xbox/i)) {
+//        		if (device.id.match(/xbox/i)) {
         		    console.log("found xbox controller;");
         		    chilipeppr.publish('/com-chilipeppr-elem-flashmsg/flashmsg', 
         		    "Xbox Controller Found", "Device: " + device.index, 500, false); 
@@ -204,7 +204,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
                         $('#com-chilipeppr-ws-xbox').removeClass("hidden");
                         $('#com-chilipeppr-ws-menu .xbox-button').addClass("active");
                     }
-        		}
+//        		}
         	});
         
         	gamepad.bind(Gamepad.Event.DISCONNECTED, function(device) {
@@ -224,7 +224,10 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         	gamepad.bind(Gamepad.Event.BUTTON_DOWN, function(e) {
         		// e.control of gamepad e.gamepad pressed down
         		console.log("e.control of gamepad e.gamepad pressed down. e:", e);
-        		 
+				 
+				chilipeppr.publish('/com-chilipeppr-elem-flashmsg/flashmsg', "Gamepad Controller Button Down", e.control + that.joggingEnabled, 500, true);
+	
+
         		switch (e.control) {
         		    case 'FACE_1':
         		        // Got A button for z probing
@@ -1806,7 +1809,7 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
 				id.indexOf('generic usb joystick') !== -1)) {
 			return Gamepad.Type.N64;
 		} else if (id.indexOf('(vendor: 2dc8 product: 6100)') !== -1 ) {
-			return Gamepad.Type.SF30_PRO;
+			return Gamepad.Type.UNKNOWN;
 		} else {
 			return Gamepad.Type.UNKNOWN;
 		}

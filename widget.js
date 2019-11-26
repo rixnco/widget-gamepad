@@ -410,9 +410,9 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         
         stickJogStop: function() {
             console.log("Send Gcode Feedhold and Flush");
-            // chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!\n%\n");
+            chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!\n~\n");
             // setTimeout(function () {
-            //     chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "%\n");
+            //     chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "~\n");
             // }, 200);
         },
         

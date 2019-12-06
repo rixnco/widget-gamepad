@@ -444,10 +444,10 @@ cpdefine("inline:com-chilipeppr-widget-xbox", ["chilipeppr_ready", /* other depe
         
         stickJogStop: function() {
             console.log("Send Gcode Feedhold and Flush");
-            chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "!\n~\n");
-            // setTimeout(function () {
-            //     chilipeppr.publish("/com-chilipeppr-widget-serialport/send", "~\n");
-            // }, 200);
+            chilipeppr.publish("/com-chilipeppr-widget-serialport/send", String.fromCharCode(0x85)+"\n");
+            setTimeout(function () {
+                chilipeppr.publish("/com-chilipeppr-widget-serialport/send", String.fromCharCode(0x85)+"\n");
+            }, 200);
         },
         
         onPlannerPause: function () {

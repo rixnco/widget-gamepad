@@ -1393,7 +1393,7 @@ var pushToGithubSync = function(message) {
   stdout += "> git add *\n";
   stdout += '> git commit -m "' + message + '"\n';
   stdout += "> git push\n";
-  stdout += proc.execSync('git add *; git commit -m "' + message + '"; git push;', { encoding: 'utf8' });
+  stdout += proc.execSync('git add * && git commit -m "' + message + '" && git push;', { encoding: 'utf8' });
   console.log("Pushed to github sync. Stdout:", stdout);
   
   return stdout;
